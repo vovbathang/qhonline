@@ -2,22 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: thangnguyen
- * Date: 11/6/18
- * Time: 1:07 AM
+ * Date: 09/11/2018
+ * Time: 15:41
  */
 namespace QHO\Schema\Setup;
 
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Db\Ddl\Table;
-use function PHPSTORM_META\type;
 
-class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface{
+class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface {
     /**
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
      */
-    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
+    public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         // TODO: Implement install() method.
         $setup->startSetup();
@@ -45,6 +44,8 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface{
                 )
                 ->setOption('charset', 'utf8');
             $connect->createTable($table);
+        }else{
+            $setup->run("ALTER TABLE ".$tableName." ADD COLUMN status BOOLEAN, ADD sort_order SMALLINT");
         }
         $setup->endSetup();
     }
