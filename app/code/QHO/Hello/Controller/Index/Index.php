@@ -7,6 +7,7 @@
  */
 namespace QHO\Hello\Controller\Index;
 
+use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\Action\Context;
 
@@ -15,15 +16,21 @@ class Index extends \Magento\Framework\App\Action\Action{
      * @var RequestInterface
      */
     protected $_request;
-
+    /**
+     * @var PageFactory
+     */
+    protected $_pageFactory;
     /**
      * Index constructor.
      * @param Context $context
      * @param RequestInterface $request
      */
-    public function __construct(Context $context, RequestInterface $request)
+    public function __construct(Context $context,
+                                RequestInterface $request,
+                                PageFactory $pageFactory)
     {
         $this->_request=$request;
+        $this->_pageFactory=$pageFactory;
         parent::__construct($context);
     }
 
@@ -32,13 +39,7 @@ class Index extends \Magento\Framework\App\Action\Action{
      */
     public function execute()
     {
-        // TODO: Implement execute() method.
-        $fullRequest=$this->getInfo();
-        $module=$fullRequest[0];
-        $controller=$fullRequest[1];
-        $action=$fullRequest[2];
-        echo "<h1>$module Module - $controller Controller - $action Action</h1>";
-        exit();
+        return $this->_pageFactory->create();
     }
 
     /**

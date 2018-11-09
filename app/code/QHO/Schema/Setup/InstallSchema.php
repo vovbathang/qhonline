@@ -23,27 +23,29 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface{
         $setup->startSetup();
         $connect= $setup->getConnection();
         $tableName= $setup->getTable('data_example');
-        $table= $connect->newTable($tableName)
-                        ->addColumn(
-                          'id',
-                          Table::TYPE_INTEGER,
-                          null,
-                          ['identity'=> true, 'unsigned'=> true, 'nullable'=> false, 'primary'=> true]
-                        )
-                        ->addColumn(
-                            'title',
-                            Table::TYPE_TEXT,
-                            255,
-                            ['nullable'=> true, 'default'=> '']
-                        )
-                        ->addColumn(
-                            'content',
-                            Table::TYPE_TEXT,
-                            '2M',
-                            ['nullable'=> true, 'default'=> '']
-                        )
-                        ->setOption('charset', 'utf8');
-        $connect->createTable($table);
+        if($connect->isTableExists($tableName) != true){
+            $table= $connect->newTable($tableName)
+                ->addColumn(
+                    'id',
+                    Table::TYPE_INTEGER,
+                    null,
+                    ['identity'=> true, 'unsigned'=> true, 'nullable'=> false, 'primary'=> true]
+                )
+                ->addColumn(
+                    'title',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable'=> true, 'default'=> '']
+                )
+                ->addColumn(
+                    'content',
+                    Table::TYPE_TEXT,
+                    '2M',
+                    ['nullable'=> true, 'default'=> '']
+                )
+                ->setOption('charset', 'utf8');
+            $connect->createTable($table);
+        }
         $setup->endSetup();
     }
 }
