@@ -12,6 +12,6 @@ class Save extends Index
 {
     public function execute()
     {
-        $this->_forward("add");
+        $this->_forward('add');
     }
 }
