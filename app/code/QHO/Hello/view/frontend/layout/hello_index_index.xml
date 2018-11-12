@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-        <head>
-            <title>Hello Module</title>
-            <css src="QHO_Hello::css/style.css" />
-            <script src="QHO_Hello::js/sample.js" />
-        </head>
+    <head>
+        <title>Hello Module</title>
+        <css src="QHO_Hello::css/style.css"/>
+        <css src="QHO_Hello::css/dcalendar.picker.css"/>
+        <script src="QHO_Hello::js/sample.js"/>
+    </head>
     <referenceBlock name="content">
         <block class="QHO\Hello\Block\Hello" name="QHO_Hello" template="hello.phtml"/>
     </referenceBlock>

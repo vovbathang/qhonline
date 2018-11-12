@@ -4,6 +4,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Smart\Customer\Controller\Account;
 
 use Magento\Customer\Model\Session;
@@ -31,7 +32,8 @@ class Login extends \Magento\Customer\Controller\AbstractAccount
         Context $context,
         Session $customerSession,
         PageFactory $resultPageFactory
-    ) {
+    )
+    {
         $this->session = $customerSession;
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);

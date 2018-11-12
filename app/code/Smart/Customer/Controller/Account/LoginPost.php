@@ -3,6 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Smart\Customer\Controller\Account;
 
 use Magento\Customer\Model\Account\Redirect as AccountRedirect;
@@ -72,7 +73,8 @@ class LoginPost extends \Magento\Customer\Controller\AbstractAccount
         CustomerUrl $customerHelperData,
         Validator $formKeyValidator,
         AccountRedirect $accountRedirect
-    ) {
+    )
+    {
         $this->session = $customerSession;
         $this->customerAccountManagement = $customerAccountManagement;
         $this->customerUrl = $customerHelperData;

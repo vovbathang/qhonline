@@ -5,9 +5,16 @@
  * Date: 29/10/2018
  * Time: 16:59
  */
+
 namespace QHO\Hello\Controller\Index;
 
-class Add extends Index{
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
+
+class Add extends Index
+{
     public function execute()
     {
         return $this->_pageFactory->create();

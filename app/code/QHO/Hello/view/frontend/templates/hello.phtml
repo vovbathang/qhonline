@@ -1,1 +1,16 @@
 <h3>Hello Action</h3>
+<h2> <?php echo $slogan; ?></h2>
+<input type="text" id="demo">
+<p>
+    <?php
+    $urlImage = $block->getBaseUrl() . "pub/media/Thang.jpg";
+    $link = $block->getUrl("hello/index/add");
+    ?>
+</p>
+<?php echo $link; ?>
+<img src="<?php echo $urlImage; ?>" title="ThangAvatar"/>
+<script>
+    require(["jquery", "calendarjs"], function ($) {
+        $("#demo").dcalendarpicker();
+    })
+</script>
