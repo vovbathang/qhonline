@@ -6,7 +6,7 @@
  * Time: 15:34
  */
 
-namespace QHO\Hello\Controller\Index;
+namespace QHO\Hello\Controller\Index ;
 
 class Save extends Index
 {
