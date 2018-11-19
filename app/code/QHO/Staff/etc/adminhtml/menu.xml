@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="QHO_Staff::staff"
+             title="Staff Manager"
+             module="QHO_Staff"
+             sortOrder="10"
+             action="staff"
+             resource="QHO_Staff::staff"
+        />
+        <add id="QHO_Staff::staff_list"
+             title="List All Staff"
+             module="QHO_Staff"
+             sortOrder="1"
+             action="staff/index"
+             resource="QHO_Staff::staff"
+             parent="QHO_Staff::staff"
+        />
+        <add id="QHO_Staff::staff_save"
+             title="Add New Staff"
+             module="QHO_Staff"
+             sortOrder="2"
+             action="staff/index/add"
+             resource="QHO_Staff::staff_save"
+             parent="QHO_Staff::staff"
+        />
+    </menu>
+</config>
