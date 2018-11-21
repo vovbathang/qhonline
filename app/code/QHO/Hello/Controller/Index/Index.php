@@ -41,7 +41,7 @@ class Index extends \Magento\Framework\App\Action\Action
         $this->_request = $request;
         $this->_coreRegistry = $coreRegistry;
         $this->_pageFactory = $pageFactory;
-        parent::__construct($context);
+        parent::__construct($context, $request);
     }
 
     /**

@@ -9,6 +9,7 @@
 namespace QHO\Staff\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action\Context;
+use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use QHO\Staff\Model\StaffFactory;
 
@@ -17,10 +18,15 @@ class Edit extends \Magento\Backend\App\Action
     /**
      * @var PageFactory
      */
-    protected $_resultPageFactory;
-
-    protected $_staffFactory;
-
+    public $_resultPageFactory;
+    /**
+     * @var StaffFactory
+     */
+    public $_staffFactory;
+    /**
+     * @var Registry
+     */
+    protected $_coreRegistry;
     /**
      * Index constructor.
      * @param Context $context
@@ -28,16 +34,19 @@ class Edit extends \Magento\Backend\App\Action
      */
     public function __construct(Context $context,
                                 PageFactory $pageFactory,
+                                Registry $registry,
                                 StaffFactory $staffFactory)
     {
-        $this->_resultPageFactory = $pageFactory;
-        $this->_staffFactory = $staffFactory;
         parent::__construct($context);
+        $this->_resultPageFactory = $pageFactory;
+        $this->_coreRegistry=$registry;
+        $this->_staffFactory = $staffFactory;
     }
 
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
      */
+
     public function execute()
     {
         $staffId = $this->getRequest()->getParam("id");
@@ -45,13 +54,18 @@ class Edit extends \Magento\Backend\App\Action
         if ($staffId) {
             $model->load($staffId);
             if (!$model->getId()) {
-                $this->messageManager->addErrorMessage(__("This staff no longer exists."));
+                $this->messageManager->addError(__("This staff no longer exists."));
                 return $this->_redirect("*/*/");
             }
-            $title = "Edit a Staff: " . $model->getName();
+            $title = "Edit a Staff: ".$model->getName();
         } else {
             $title = "Add a New Staff";
         }
+        $data= $this->_session->getFormData(true);
+        if(!empty($data)){
+            $model->setData();
+        }
+        $this->_coreRegistry->register("staff", $model);
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu("QHO_Staff::staff");
         $resultPage->getConfig()->getTitle()->prepend(__($title));
