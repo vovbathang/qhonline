@@ -73,7 +73,7 @@ class Staff extends Column
                         'href' => $this->urlBuilder->getUrl("staff/index/delete", ['id' => $item['id']]),
                         'label' => __('Delete'),
                         'confirm' => [
-                            'title' => __('Delete ${ $.$data.title }'),
+                            'title' => __('Delete ${ $.$data.name }'),
                             'message' => __('Are you sure you want to delete a ${ $.$data.title } record?')
                         ]
                     ];
