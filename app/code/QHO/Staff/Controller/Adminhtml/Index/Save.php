@@ -37,17 +37,18 @@ class Save extends \Magento\Backend\App\Action{
 			$staffModel->setData($formData);
 
 			$formFile=$request->getFiles()->toArray();
+
 			if($formFile['avatar']['name']){
 
 				$imageHelper=$this->_objectManager->get("QHO\Staff\Helper\Image");
 				$imageFile=$imageHelper->uploadImage("avatar");
 				if($imageFile){
-					if($isDelete== 1){
+					if($isDelete == 1){
 						$imageHelper->removeImage($staffModel->getAvatar());
 					}
 					$staffModel->setAvatar("staff/$imageFile");
 				}else{
-					$this->messageManager->addError(__("Can not upload avatar, please try again"));
+					$this->messageManager->addErrorMessage(__("Can not upload avatar, please try again"));
 					
 					if($staffId){
 						return $this->_redirect($urlRedirect);
@@ -58,16 +59,18 @@ class Save extends \Magento\Backend\App\Action{
 				}
 			}else{
 				if(!$staffId){
-					$this->messageManager->addError(__("You must upload staff avatar"));
+					$this->messageManager->addErrorMessage(__("You must upload staff avatar"));
 					$this->_getSession()->setFormData($formData);
 					return $this->_redirect($urlRedirect);					
 				}
-
 			}
 			$staffModel->save();
-			$this->messageManager->addSuccess(__("The staff information has been saved"));
-			return $this->_redirect($urlRedirect);
+            $this->_getSession()->setFormData(false);
+			$this->messageManager->addSuccessMessage(__("The staff information has been saved"));
+			if ($request->getParam("back")){
+                return $this->_redirect("*/*/edit",["id"=>$staffModel->getId(), "_current"=>true]);
+            }
+			return $this->_redirect("*/*/");
 		}
-
 	}
 }

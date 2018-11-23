@@ -2,10 +2,11 @@
 
 namespace QHO\Staff\Controller\Adminhtml\Index;
 
+use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
-class Add extends \Magento\Backend\App\Action
+class Add extends Action
 {
     /**
      * @var PageFactory
