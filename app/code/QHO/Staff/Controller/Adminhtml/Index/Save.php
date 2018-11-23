@@ -64,7 +64,6 @@ class Save extends \Magento\Backend\App\Action{
 				}
 
 			}
-
 			$staffModel->save();
 			$this->messageManager->addSuccess(__("The staff information has been saved"));
 			return $this->_redirect($urlRedirect);
