@@ -13,12 +13,20 @@ class Add extends Action
      */
     protected $_resultPageFactory;
 
+    /**
+     * Add constructor.
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     */
     public function __construct(Context $context, PageFactory $pageFactory)
     {
         parent::__construct($context);
         $this->_resultPageFactory = $pageFactory;
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     */
     public function execute()
     {
         return $this->_forward("edit");

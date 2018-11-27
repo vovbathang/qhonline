@@ -2,6 +2,7 @@
 namespace QHO\Staff\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
+
 class Index extends \Magento\Backend\App\Action{
 	protected $_resultPageFactory;
 	public function __construct(Context $context, PageFactory $pageFactory){
