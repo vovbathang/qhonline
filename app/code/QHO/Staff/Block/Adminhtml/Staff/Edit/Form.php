@@ -5,15 +5,20 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Data\FormFactory;
 use QHO\Staff\Model\Config\Status;
+use Magento\Cms\Model\Wysiwyg\Config;
+
 class Form extends Generic{
 	protected $_staffStatus;
+	protected $_editor;
 	public function __construct(
 						Context $context,
 						Registry $registry,
 						FormFactory $formFactory,
 						Status $status,
+						Config $editor,
 						array $data){
 		$this->_staffStatus=$status;
+		$this->_editor= $editor;
 		parent::__construct($context,$registry,$formFactory,$data);
 	}
 	protected function _construct(){
@@ -98,8 +103,19 @@ class Form extends Generic{
 					"label" => __("Avatar"),
 					"required" => true,
 				]
-			);		
-		$data=$model->getData();
+			);
+		$editorConfig= $this->_editor->getConfig();
+        $fieldset->addField(
+            "profile",
+            "editor",
+            [
+                "name" => "profile",
+                "label" => __("Profile"),
+                "config"=> $editorConfig,
+                "style"=> "height:36em"
+            ]
+        );
+        $data=$model->getData();
 		$form->setValues($data);				
 		$form->setHtmlIdPrefix("staff_main_");			
 		$form->setUseContainer(true);

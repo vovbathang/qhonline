@@ -92,8 +92,9 @@ class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface
             $table->setOption("charset", "utf8");
             $conn->createTable($table);
         }else{
-            $fullTextIndex=array("name", "email", "phone");
-            $conn->addIndex($tableName, $setup->getIdxName($tableName, $fullTextIndex, AdapterInterface::INDEX_TYPE_FULLTEXT), $fullTextIndex, AdapterInterface::INDEX_TYPE_FULLTEXT);
+            //$fullTextIndex=array("name", "email", "phone");
+           // $conn->addIndex($tableName, $setup->getIdxName($tableName, $fullTextIndex, AdapterInterface::INDEX_TYPE_FULLTEXT), $fullTextIndex, AdapterInterface::INDEX_TYPE_FULLTEXT);
+            $setup->run("ALTER TABLE ".$tableName." ADD COLUMN profile MEDIUMTEXT");
         }
         $setup->endSetup();
         // TODO: Implement install() method.

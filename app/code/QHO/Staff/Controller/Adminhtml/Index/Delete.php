@@ -9,6 +9,7 @@
 namespace QHO\Staff\Controller\Adminhtml\Index;
 class Delete extends \Magento\Backend\App\Action
 {
+    const ADMIN_RESOURCE = "QHO_Staff::staff_delete" ;
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
      */

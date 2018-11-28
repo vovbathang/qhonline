@@ -21,7 +21,10 @@ class Save extends \Magento\Backend\App\Action
      * @var Registry
      */
     protected $_coreRegistry;
-
+    /**
+     * Const
+     */
+    const ADMIN_RESOURCE = "QHO_Staff::staff_save" ;
     /**
      * Save constructor.
      * @param Context $context
@@ -93,6 +96,7 @@ class Save extends \Magento\Backend\App\Action
                 }
             }
             $staffModel->save();
+            $this->_eventManager->dispatch("staff_savedata", ["model"=>$staffModel]);
             $this->_getSession()->setFormData(false);
             $this->messageManager->addSuccessMessage(__("The staff information has been saved"));
             if ($request->getParam("back")) {

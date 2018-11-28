@@ -21,7 +21,10 @@ class Edit extends \Magento\Backend\App\Action
      * @var Registry
      */
     protected $_coreRegistry;
-
+    /**
+     * Const
+     */
+    const ADMIN_RESOURCE = "QHO_Staff::staff_save" ;
     /**
      * Edit constructor.
      * @param Context $context
