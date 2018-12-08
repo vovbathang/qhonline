@@ -1,14 +1,14 @@
 <?php
 namespace QHO\Staff\Block\Adminhtml\Staff\Edit;
 use Magento\Backend\Block\Widget\Form\Generic;
-use Magento\Backend\Block\Template\Context;
-use Magento\Framework\Registry;
-use Magento\Framework\Data\FormFactory;
-use QHO\Staff\Model\Config\Status;
-use Magento\Cms\Model\Wysiwyg\Config;
+//use Magento\Backend\Block\Template\Context;
+//use Magento\Framework\Registry;
+//use Magento\Framework\Data\FormFactory;
+//use QHO\Staff\Model\Config\Status;
+//use Magento\Cms\Model\Wysiwyg\Config;
 
 class Form extends Generic{
-	protected $_staffStatus;
+	/*protected $_staffStatus;
 	protected $_editor;
 	public function __construct(
 						Context $context,
@@ -20,14 +20,14 @@ class Form extends Generic{
 		$this->_staffStatus=$status;
 		$this->_editor= $editor;
 		parent::__construct($context,$registry,$formFactory,$data);
-	}
+	}*/
 	protected function _construct(){
 		$this->setId("staff_form");
 		$this->setTitle(__("Staff Information"));
 		parent::_construct();
 	}
 	protected function _prepareForm(){
-		$model=$this->_coreRegistry->registry("staff");
+		//$model=$this->_coreRegistry->registry("staff");
 		$form=$this->_formFactory->create(
 				[
 					"data" => [
@@ -38,7 +38,7 @@ class Form extends Generic{
 					]
 				]
 			);
-		$fieldset=$form->addFieldset(
+		/* $fieldset=$form->addFieldset(
 				"base_fieldset",
 				["legend"=>__("General Information"),"class"=>"fieldset-wide"]
 			);
@@ -116,7 +116,7 @@ class Form extends Generic{
             ]
         );
         $data=$model->getData();
-		$form->setValues($data);				
+		$form->setValues($data); */
 		$form->setHtmlIdPrefix("staff_main_");			
 		$form->setUseContainer(true);
 		$this->setForm($form);
