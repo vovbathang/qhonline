@@ -69,6 +69,6 @@ class Edit extends \Magento\Backend\App\Action
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu("QHO_Staff::staff");
         $resultPage->getConfig()->getTitle()->prepend(__($title));
-        return $resultPage;
+            return $resultPage;
     }
 }
