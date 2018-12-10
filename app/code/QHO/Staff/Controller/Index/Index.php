@@ -5,12 +5,14 @@
  * Date: 30/11/2018
  * Time: 14:34
  */
+
 namespace QHO\Staff\Controller\Index;
 
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\App\Action\Context;
 
-class Index extends \Magento\Framework\App\Action\Action{
+class Index extends \Magento\Framework\App\Action\Action
+{
     /**
      * @var PageFactory
      */
@@ -23,7 +25,7 @@ class Index extends \Magento\Framework\App\Action\Action{
      */
     public function __construct(Context $context, PageFactory $pageFactory)
     {
-        $this->_pageFactory= $pageFactory;
+        $this->_pageFactory = $pageFactory;
         parent::__construct($context);
     }
 
@@ -33,7 +35,7 @@ class Index extends \Magento\Framework\App\Action\Action{
     public function execute()
     {
         $this->_view->getPage()->getConfig()->getTitle()->set(__("Our Team"));
-        $resultPage= $this->_pageFactory->create();
+        $resultPage = $this->_pageFactory->create();
         return $resultPage;
     }
 }
