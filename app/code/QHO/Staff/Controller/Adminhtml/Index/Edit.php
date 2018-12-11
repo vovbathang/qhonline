@@ -24,7 +24,8 @@ class Edit extends \Magento\Backend\App\Action
     /**
      * Const
      */
-    const ADMIN_RESOURCE = "QHO_Staff::staff_save" ;
+    const ADMIN_RESOURCE = "QHO_Staff::staff_save";
+
     /**
      * Edit constructor.
      * @param Context $context
@@ -69,6 +70,6 @@ class Edit extends \Magento\Backend\App\Action
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu("QHO_Staff::staff");
         $resultPage->getConfig()->getTitle()->prepend(__($title));
-            return $resultPage;
+        return $resultPage;
     }
 }
