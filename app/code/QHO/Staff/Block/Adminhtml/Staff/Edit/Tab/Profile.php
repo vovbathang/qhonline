@@ -17,8 +17,19 @@ use Magento\Backend\Block\Widget\Tab\TabInterface;
 
 class Profile extends Generic implements TabInterface
 {
+    /**
+     * @var Config
+     */
     protected $_editor;
 
+    /**
+     * Profile constructor.
+     * @param Context $context
+     * @param Registry $registry
+     * @param FormFactory $formFactory
+     * @param Config $editor
+     * @param array $data
+     */
     public function __construct(
         Context $context,
         Registry $registry,
@@ -30,6 +41,10 @@ class Profile extends Generic implements TabInterface
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
+    /**
+     * @return Generic
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
     protected function _prepareForm()
     {
         $model = $this->_coreRegistry->registry("staff");
