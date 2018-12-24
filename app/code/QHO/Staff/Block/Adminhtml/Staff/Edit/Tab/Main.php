@@ -7,6 +7,7 @@
  */
 
 namespace QHO\Staff\Block\Adminhtml\Staff\Edit\Tab;
+
 use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
@@ -14,7 +15,8 @@ use Magento\Framework\Data\FormFactory;
 use QHO\Staff\Model\Config\Status;
 use Magento\Backend\Block\Widget\Tab\TabInterface;
 
-class Main extends Generic implements TabInterface{
+class Main extends Generic implements TabInterface
+{
     /**
      * @var Status
      */
@@ -33,25 +35,26 @@ class Main extends Generic implements TabInterface{
         Registry $registry,
         FormFactory $formFactory,
         Status $status,
-        array $data=[])
+        array $data = [])
     {
-        $this->_staffStatus=$status;
-        parent::__construct($context,$registry,$formFactory,$data);
+        $this->_staffStatus = $status;
+        parent::__construct($context, $registry, $formFactory, $data);
     }
 
     /**
      * @return Generic
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    protected function _prepareForm(){
-        $model=$this->_coreRegistry->registry("staff");
-        $form=$this->_formFactory->create();
+    protected function _prepareForm()
+    {
+        $model = $this->_coreRegistry->registry("staff");
+        $form = $this->_formFactory->create();
 
-        $fieldset=$form->addFieldset(
+        $fieldset = $form->addFieldset(
             "base_fieldset",
-            ["legend"=>__("General Information"),"class"=>"fieldset-wide"]
+            ["legend" => __("General Information"), "class" => "fieldset-wide"]
         );
-        if($model->getId()){
+        if ($model->getId()) {
             $fieldset->addField(
                 "id",
                 "hidden",
@@ -105,26 +108,30 @@ class Main extends Generic implements TabInterface{
             ]
         );
 
-        $data=$model->getData();
+        $data = $model->getData();
         $form->setValues($data);
         $this->setForm($form);
         return parent::_prepareForm();
     }
+
     public function getTabLabel()
     {
         return __("Main Information");
         // TODO: Implement getTabLabel() method.
     }
+
     public function getTabTitle()
     {
         return __("Main Information");
         // TODO: Implement getTabTitle() method.
     }
+
     public function canShowTab()
     {
         return true;
         // TODO: Implement canShowTab() method.
     }
+
     public function isHidden()
     {
         return false;
