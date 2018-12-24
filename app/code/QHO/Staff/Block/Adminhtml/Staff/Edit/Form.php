@@ -1,15 +1,18 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: thangnguyen
+ * Date: 24/12/2018
+ * Time: 23:54
+ */
 
 namespace QHO\Staff\Block\Adminhtml\Staff\Edit;
-
 use Magento\Backend\Block\Widget\Form\Generic;
-
 //use Magento\Backend\Block\Template\Context;
 //use Magento\Framework\Registry;
 //use Magento\Framework\Data\FormFactory;
 //use QHO\Staff\Model\Config\Status;
 //use Magento\Cms\Model\Wysiwyg\Config;
-
 class Form extends Generic
 {
     /*protected $_staffStatus;
@@ -31,7 +34,6 @@ class Form extends Generic
         $this->setTitle(__("Staff Information"));
         parent::_construct();
     }
-
     protected function _prepareForm()
     {
         //$model=$this->_coreRegistry->registry("staff");

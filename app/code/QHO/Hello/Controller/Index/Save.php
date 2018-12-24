@@ -10,6 +10,9 @@ namespace QHO\Hello\Controller\Index;
 
 class Save extends Index
 {
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     */
     public function execute()
     {
         $this->_forward('add');
