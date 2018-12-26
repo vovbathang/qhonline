@@ -5,12 +5,14 @@
  * Date: 13/11/2018
  * Time: 15:40
  */
+
 namespace QHO\Hello\Controller\Index;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\Action;
 
-class Test extends Action{
+class Test extends Action
+{
     /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
@@ -23,7 +25,7 @@ class Test extends Action{
      */
     public function __construct(Context $context, \Magento\Framework\View\Result\PageFactory $pageFactory)
     {
-        $this->_pageFactory= $pageFactory;
+        $this->_pageFactory = $pageFactory;
         parent::__construct($context);
     }
 
@@ -33,6 +35,6 @@ class Test extends Action{
     public function execute()
     {
         // TODO: Implement execute() method.
-       return $this->_pageFactory->create();
+        return $this->_pageFactory->create();
     }
 }
