@@ -12,3 +12,54 @@ foreach ($data1 as $day) {
 }
 echo $this->getData("abc");
 ?>
+</br>
+<?php
+
+class add
+{
+    /**
+     * @var string name
+     */
+    public $name = "thang";
+    public $name1;
+
+    public function set_name($ten)
+    {
+        $this->name1 = $ten;
+    }
+
+    public function get_name()
+    {
+        return $this->name1;
+    }
+
+    /**
+     * @return string
+     */
+    public function test()
+    {
+        return $this->name;
+    }
+}
+
+class ABC{
+    public $name= "qhonline";
+    protected function test1(){
+        echo $this->name;
+    }
+}
+class BCD extends ABC{
+    public $job="teacher";
+    public function test1(){
+        parent::test1();
+        echo $this->job;
+    }
+}
+$a= new BCD;
+$a->test1();
+
+$a = new add;
+echo $a->test();
+$a->set_name("kenny");
+echo $a->get_name();
+?>
