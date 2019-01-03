@@ -5,7 +5,8 @@
  * Date: 13/11/2018
  * Time: 15:40
  */
-
+namespace QHO\Hello\Controller\Index;
+use Magento\Framework\View\App\Action\Action;
 class Person
 {
     public $name;
