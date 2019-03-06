@@ -12,6 +12,9 @@ use Magento\Framework\Controller\ResultFactory;
 
 class Edit extends Index
 {
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     */
     public function execute()
     {
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
