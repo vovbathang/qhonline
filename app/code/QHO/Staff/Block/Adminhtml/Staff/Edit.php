@@ -16,13 +16,13 @@ class Edit extends Container
         $this->buttonList->add(
             "saveandcontinue",
             [
-                "label"=>__("Save and Continue Edit"),
-                "class"=>"save",
-                "data_attribute"=>[
-                    "mage-init"=> [
-                        "button"=>[
-                            "event"=>"saveAndContinueEdit",
-                            "target"=>"#edit_form"
+                "label" => __("Save and Continue Edit"),
+                "class" => "save",
+                "data_attribute" => [
+                    "mage-init" => [
+                        "button" => [
+                            "event" => "saveAndContinueEdit",
+                            "target" => "#edit_form"
                         ]
                     ]
                 ]
@@ -32,7 +32,8 @@ class Edit extends Container
         $this->buttonList->update("delete", "label", __("Delete"));
     }
 
-    protected function _getSaveAndContinueUrl(){
-        return $this->getUrl("staff/*/save", ["_current"=>true, "back"=>"edit", "active_tab"=>""]);
+    protected function _getSaveAndContinueUrl()
+    {
+        return $this->getUrl("staff/*/save", ["_current" => true, "back" => "edit", "active_tab" => ""]);
     }
 }

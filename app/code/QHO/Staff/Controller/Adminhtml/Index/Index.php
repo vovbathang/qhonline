@@ -31,7 +31,6 @@ class Index extends \Magento\Backend\App\Action
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu("QHO_Staff::staff");
         $resultPage->getConfig()->getTitle()->prepend(__("Staff Manager"));
-
         /*$name=["Nguyen Van Teo","Nguyen Van Tun","Tran Van Tung","Truong Hoai Lam","Tran Quang Phong"];
         $email=["vanteo@gmail.com","vantun@yahoo.com","tungtran@gmail.com","hoailam@gmail.com","quangphong@yahoo.com"];
         $phone=["0903354595","0999351247","113","1174","1154"];
@@ -48,7 +47,6 @@ class Index extends \Magento\Backend\App\Action
                 "status" => rand(0,1),
             ])->save();
         }*/
-
         return $resultPage;
     }
 }

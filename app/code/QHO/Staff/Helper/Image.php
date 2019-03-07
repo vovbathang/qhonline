@@ -2,8 +2,11 @@
 /**
  * News data helper
  */
+
 namespace QHO\Staff\Helper;
+
 use Magento\Framework\App\Filesystem\DirectoryList;
+
 class Image extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
@@ -11,7 +14,7 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @var string
      */
-    const MEDIA_PATH    = 'staff';
+    const MEDIA_PATH = 'staff';
     /**
      * Maximum size for image in bytes
      * Default value is 1M
@@ -48,13 +51,13 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
      *
      * @var array
      */
-    protected $_imageSize   = array(
-        'minheight'     => self::MIN_HEIGHT,
-        'minwidth'      => self::MIN_WIDTH,
-        'maxheight'     => self::MAX_HEIGHT,
-        'maxwidth'      => self::MAX_WIDTH,
+    protected $_imageSize = array(
+        'minheight' => self::MIN_HEIGHT,
+        'minwidth' => self::MIN_WIDTH,
+        'maxheight' => self::MAX_HEIGHT,
+        'maxwidth' => self::MAX_WIDTH,
     );
-    
+
     /**
      * @var \Magento\Framework\Filesystem\Directory\WriteInterface
      */
@@ -67,28 +70,28 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
      * @var \Magento\Framework\HTTP\Adapter\FileTransferFactory
      */
     protected $httpFactory;
-    
+
     /**
      * File Uploader factory
      *
      * @var \Magento\MediaStorage\Model\File\UploaderFactory
      */
     protected $_fileUploaderFactory;
-    
+
     /**
      * File Uploader factory
      *
      * @var \Magento\Framework\Io\File
      */
     protected $_ioFile;
-    
+
     /**
      * Store manager
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
-    
+
     /**
      * @param \Magento\Framework\App\Helper\Context $context
      */
@@ -102,7 +105,8 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\Framework\Filesystem\Io\File $ioFile,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Image\Factory $imageFactory
-    ) {
+    )
+    {
         $this->_scopeConfig = $scopeConfig;
         $this->filesystem = $filesystem;
         $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
@@ -113,7 +117,7 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_imageFactory = $imageFactory;
         parent::__construct($context);
     }
-    
+
     /**
      * Remove news item image by image filename
      *
@@ -123,14 +127,14 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
     public function removeImage($imageFile)
     {
         $io = $this->_ioFile;
-        $io->open(array('path' => $this->getBaseDir().'/../'));
+        $io->open(array('path' => $this->getBaseDir() . '/../'));
         if ($io->fileExists($imageFile)) {
             return $io->rm($imageFile);
         }
         return false;
     }
-    
-    
+
+
     /**
      * Upload image and return uploaded image file name or false
      *
@@ -145,26 +149,26 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
         $adapter->addValidator(
             new \Zend_Validate_File_FilesSize(['max' => self::MAX_FILE_SIZE])
         );
-        
+
         if ($adapter->isUploaded($scope)) {
             // validate image
             if (!$adapter->isValid($scope)) {
                 return false;
             }
-            
+
             $uploader = $this->_fileUploaderFactory->create(['fileId' => $scope]);
             $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
             $uploader->setAllowRenameFiles(true);
             $uploader->setFilesDispersion(false);
             $uploader->setAllowCreateFolders(true);
-            
+
             if ($uploader->save($this->getBaseDir())) {
                 return $uploader->getUploadedFileName();
             }
         }
         return false;
     }
-    
+
     /**
      * Return the base media directory for News Item images
      *
@@ -177,14 +181,14 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
         )->getAbsolutePath(self::MEDIA_PATH);
         return $path;
     }
-    
+
     /**
      * Return the Base URL for News Item images
      *
      * @return string
      */
     public function getBaseUrl()
-    { 
+    {
         return $this->_storeManager->getStore()->getBaseUrl(
                 \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
             ) . '/' . self::MEDIA_PATH;

@@ -13,15 +13,30 @@ use Magento\Framework\View\Element\Template;
 
 class Hello extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @var Registry
+     */
     protected $_coreRegistry;
+    /**
+     * @var ObjectManager
+     */
     protected $_objectManager;
 
+    /**
+     * Hello constructor.
+     * @param Template\Context $context
+     * @param Registry $coreRegistry
+     * @param array $data
+     */
     public function __construct(Template\Context $context, Registry $coreRegistry, array $data = [])
     {
         $this->_coreRegistry = $coreRegistry;
         parent::__construct($context, $data);
     }
 
+    /**
+     * @return Template
+     */
     protected function _prepareLayout()
     {
         $slogan = $this->_coreRegistry->registry("qho");

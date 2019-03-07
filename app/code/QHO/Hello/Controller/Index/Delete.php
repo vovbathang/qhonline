@@ -10,6 +10,9 @@ namespace QHO\Hello\Controller\Index;
 
 class Delete extends Index
 {
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     */
     public function execute()
     {
         $this->_redirect('hello/index/add');

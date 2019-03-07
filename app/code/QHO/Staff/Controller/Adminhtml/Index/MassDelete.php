@@ -41,11 +41,11 @@ class MassDelete extends \Magento\Backend\App\Action
     public function execute()
     {
         // TODO: Implement execute() method.
-        $collectionObject= $this->_collectionFactory->create();
+        $collectionObject = $this->_collectionFactory->create();
         $collection = $this->_filter->getCollection($collectionObject);
         $imageHelper = $this->_objectManager->get("QHO\Staff\Helper\Image");
-        $numberRecord= $collection->getSize();
-        foreach ($collection as $item){
+        $numberRecord = $collection->getSize();
+        foreach ($collection as $item) {
             $imageHelper->removeImage($item->getAvatar());
             $item->delete();
         }

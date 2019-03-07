@@ -5,6 +5,7 @@
  * Date: 23/11/2018
  * Time: 15:05
  */
+
 namespace QHO\Staff\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
@@ -40,10 +41,10 @@ class MassDisable extends \Magento\Backend\App\Action
     public function execute()
     {
         // TODO: Implement execute() method.
-        $collectionObject= $this->_collectionFactory->create();
+        $collectionObject = $this->_collectionFactory->create();
         $collection = $this->_filter->getCollection($collectionObject);
-        $numberRecord= $collection->getSize();
-        foreach ($collection as $item){
+        $numberRecord = $collection->getSize();
+        foreach ($collection as $item) {
             $item->setStatus(0);
             $item->save();
         }

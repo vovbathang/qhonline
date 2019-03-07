@@ -5,7 +5,6 @@ return [
         'Magento_Directory' => 1,
         'Magento_Eav' => 1,
         'Magento_Backend' => 1,
-        'Expert_EditorPdf' => 0,
         'Magento_Theme' => 1,
         'Magento_Customer' => 1,
         'Magento_AdminNotification' => 1,

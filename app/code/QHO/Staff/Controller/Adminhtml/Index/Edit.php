@@ -24,7 +24,8 @@ class Edit extends \Magento\Backend\App\Action
     /**
      * Const
      */
-    const ADMIN_RESOURCE = "QHO_Staff::staff_save" ;
+    const ADMIN_RESOURCE = "QHO_Staff::staff_save";
+
     /**
      * Edit constructor.
      * @param Context $context

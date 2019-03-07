@@ -15,6 +15,9 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Add extends Index
 {
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page|void
+     */
     public function execute()
     {
         return $this->_pageFactory->create();
