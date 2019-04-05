@@ -138,9 +138,9 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Upload image and return uploaded image file name or false
      *
-     * @throws Mage_Core_Exception
      * @param string $scope the request key for file
      * @return bool|string
+     * @throws Mage_Core_Exception
      */
     public function uploadImage($scope)
     {
