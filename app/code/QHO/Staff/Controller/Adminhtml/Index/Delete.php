@@ -9,7 +9,8 @@
 namespace QHO\Staff\Controller\Adminhtml\Index;
 class Delete extends \Magento\Backend\App\Action
 {
-    const ADMIN_RESOURCE = "QHO_Staff::staff_delete" ;
+    const ADMIN_RESOURCE = "QHO_Staff::staff_delete";
+
     /**
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface
      */
@@ -17,7 +18,7 @@ class Delete extends \Magento\Backend\App\Action
     {
         $id = $this->getRequest()->getParam("id");
         if ($id) {
-            try{
+            try {
                 $model = $this->_objectManager->create("QHO\Staff\Model\Staff");
                 $model->load($id);
                 if ($model->getId()) {
@@ -30,7 +31,7 @@ class Delete extends \Magento\Backend\App\Action
                     $this->messageManager->addErrorMessage(__("This staff no longer exists. "));
                     return $this->_redirect("*/*/");
                 }
-            }catch(\Exception $e){
+            } catch (\Exception $e) {
                 $this->messageManager->addErrorMessage(__($e->getMessage()));
                 return $this->_redirect("*/*/");
             }
