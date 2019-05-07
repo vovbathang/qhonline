@@ -16,6 +16,7 @@ use Magento\Framework\View\Result\PageFactory;
 class Add extends Index
 {
     /**
+<<<<<<< HEAD
      * Add constructor.
      * @param Context $context
      * @param RequestInterface $request
@@ -31,6 +32,8 @@ class Add extends Index
     }
 
     /**
+=======
+>>>>>>> e86c4ca4f47958e8cf994e64f2d4761b62aae0b5
      * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|\Magento\Framework\View\Result\Page|void
      */
     public function execute()
